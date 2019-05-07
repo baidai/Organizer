@@ -2,9 +2,20 @@
 <html>
 <head>
 	<title>Home</title>
+	{% load static %}
+	<link href="{%static "tinymce/css/prism.css" %}" rel="stylesheet">
 </head>
 <body>
 	<title>Site</title>
 	<p>My Site</p>
+
+	{% for t in task %}
+	<p>{{t.task_title}}</p>  
+	<p>{{t.task_date}}</p>
+	<p>{{t.task_summary|safe}}</p>
+	<br>
+	{% endfor %}
 </body>
+
+<script src="{% static "tinymce/js/prism.js" %}"></script> 
 </html>

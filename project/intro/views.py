@@ -7,4 +7,4 @@ from .models import Task
 def homepage(request):
 	return render(request = request,
 		template_name = "intro/home.html",
-		context = {"task": Task.objects.all()})
+		context = {"task": Task.objects.all()})  
