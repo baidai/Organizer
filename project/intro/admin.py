@@ -13,4 +13,5 @@ class TaskAdmin(admin.ModelAdmin):
 	formfield_overrides= {
 		models.TextField:{'widget': TinyMCE()}
 		}
+		
 admin.site.register(Task, TaskAdmin)

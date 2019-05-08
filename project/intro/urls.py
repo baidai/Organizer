@@ -5,6 +5,6 @@ app_name = 'intro'
 
 urlpatterns = [
     path('', views.homepage, name="homepage"),
-    
+    path('register/', views.register, name="register"),
 ]
 
