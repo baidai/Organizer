@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Task
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from .forms import NewUserForm
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ def homepage(request):
 
 def register(request):
 	if request.method == "POST":
-		form = UserCreationForm(request.POST)
+		form = NewUserForm(request.POST)
 		if form.is_valid():
 			user = form.save()
 			username = form.cleaned_data.get('username')
@@ -28,7 +29,34 @@ def register(request):
 				template_name = "intro/register.html",
 				context={"form":form})
 				
-	form = UserCreationForm
+	form = NewUserForm
 	return render(request,
 					"intro/register.html",
 					context={"form":form})
+
+def logout_request(request):
+	logout(request)
+	messages.info(request, "Logged out successfully. Comeback soon!")
+	return redirect("intro:homepage")
+
+def login_request(request):
+	if request.method == 'POST':
+		form = AuthenticationForm(request=request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, "Welcome Back:{username}!")
+				return redirect('/')
+			else:
+				messages.error(request, "Seems something wasn't right, please try again.")
+
+		else:
+			messages.error(request, "Oops... Try again. Something wasn't right.")
+
+	form = AuthenticationForm()
+	return render(request = request,
+				template_name = "intro/login.html",
+				context={"form":form})
