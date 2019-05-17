@@ -6,8 +6,8 @@ from tinymce.widgets import TinyMCE
 
 class TaskAdmin(admin.ModelAdmin):
 	fieldsets = [
-		("title/date", {"fields":["task_title", "task_date"]}),
-		("content", {"fields":["task_summary"]})
+		("title/date", {"fields":["task_title", "task_category", "task_importance", "task_date", "task_target", "task_acheived"]}),
+		("content", {"fields":["task_pic", "task_summary"]})
 		]
 
 	formfield_overrides= {
