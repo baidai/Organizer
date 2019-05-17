@@ -1,0 +1,38 @@
+{% extends 'intro/header.html' %}
+
+{% block content %}
+  <div class="row">
+    {% for t in task %}
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1 hoverable">
+            <div class="card-content white-text">
+              <span class="card-title">{{t.task_title}}</span>
+              <p style="font-size:70%">Published {{t.task_date}}</p>
+              <p>{{t.task_summary|safe}}</p>
+            </div>
+          </div>
+        </div>
+    {% endfor %} 
+   </div>
+
+    <div class="row">
+   	{% for t in task %}
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+          <span class="card-title">{{t.task_title}}</span>
+        </div>
+        <div class="card-content">
+      		<p style="font-size:65%">Date {{t.task_date}}</p>
+			     <p>{{t.task_summary|safe}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} 
+  	</div>
+{% endblock %}
+

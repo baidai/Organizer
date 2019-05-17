@@ -1,38 +1,27 @@
 {% extends 'intro/header.html' %}
 
 {% block content %}
-  <div class="row">
-    {% for t in task %}
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1 hoverable">
-            <div class="card-content white-text">
-              <span class="card-title">{{t.task_title}}</span>
-              <p style="font-size:70%">Published {{t.task_date}}</p>
-              <p>{{t.task_summary|safe}}</p>
-            </div>
-          </div>
-        </div>
-    {% endfor %} 
-   </div>
-
-    <div class="row">
-   	{% for t in task %}
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">{{t.task_title}}</span>
-        </div>
-        <div class="card-content">
-      		<p style="font-size:65%">Date {{t.task_date}}</p>
-			<p>{{t.task_summary|safe}}</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
+<div class="row">
+  {% for t in task %}
+  <div class="col s12 m7">
+  <div class="card small">
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{{t.task_pic}}">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{t.task_title}}<i class="material-icons right">Details</i></span>
+          <p style="font-size:65%">Set {{t.task_date}}</p>
+          <p style="font-size:65%">Target Date {{t.task_target}}</p>
+          <p style="font-size:65%">Acheived {{t.task_acheived}}</p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{t.task_title}}<i class="material-icons right">close</i></span>
+      <p>{{t.task_summary|safe}}</p>
     </div>
     {% endfor %} 
-  	</div>
+  </div>
+</div>
+</div>
+</div>
 {% endblock %}
-
