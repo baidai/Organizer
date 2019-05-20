@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Task 
 from django.db import models
-from tinymce.widgets import TinyMCE
+#from tinymce.widgets import TinyMCE
 # Register your models here.
 
 class TaskAdmin(admin.ModelAdmin):
@@ -10,8 +10,8 @@ class TaskAdmin(admin.ModelAdmin):
 		("content", {"fields":["task_pic", "task_summary"]})
 		]
 
-	formfield_overrides= {
-		models.TextField:{'widget': TinyMCE()}
-		}
+	#formfield_overrides= {
+		#models.TextField:{'widget': TinyMCE()}
+		#}
 		
 admin.site.register(Task, TaskAdmin)

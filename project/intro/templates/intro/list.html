@@ -1,0 +1,16 @@
+{% extends 'intro/header.html' %}
+
+{% block content %}
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>New Task</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+    <button type="submit">Upload</button>
+  </form>
+
+  <p><a href=" ">Return to home</a></p>
+</div>
+{% endblock %}

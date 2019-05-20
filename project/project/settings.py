@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'intro',
     'rest_framework',
     'tinymce',
@@ -157,5 +158,7 @@ STATICFILES_DIR =[
     os.path.join(BASE_DIR, 'intro/static')
 ]
 
+ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
